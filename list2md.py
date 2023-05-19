@@ -2,10 +2,17 @@ from datetime import datetime
 import json
 import requests
 
+from urllib3.exceptions import InsecureRequestWarning
+from urllib3 import disable_warnings
+
+disable_warnings(InsecureRequestWarning)
+
 
 head = '''# Top Python Web Frameworks
 A list of popular github projects related to Python web framework (ranked by stars automatically)
-Please update **list.txt** (via Pull Request)
+
+* ADD access_token.txt into this repository.
+* UPDATE **list.txt** (via Pull Request)
 
 | Project Name | Stars | Forks | Open Issues | Description | Last Commit |
 | ------------ | ----- | ----- | ----------- | ----------- | ----------- |
@@ -18,27 +25,36 @@ deprecated_repos = list()
 repos = list()
 
 
+API_URLS = {
+    "repos": "https://api.github.com/repos/{}",
+    "commit": "https://api.github.com/repos/{}/commits/{}"
+}
+
+
 def main():
     access_token = get_access_token()
+    headers = {
+        "Authorization": f"Token {access_token}"
+    }
+
+    response = requests.get("https://api.github.com/repos/django/django", headers=headers, verify=False)
+    if response.status_code >= 300:
+        raise ValueError(f'Cannot access : {response.text}')
 
     with open('list.txt', 'r') as f:
         for url in f.readlines():
-            url = url.strip()
+            repository = get_repos(url.strip())
+            print(f"[+] Get {repository} stars & commits")
+
             if url.startswith('https://github.com/'):
-                repo_api = 'https://api.github.com/repos/{}?access_token={}'.format(url[19:], access_token)
-                print(repo_api)
+                repo_resp = requests.get(url=API_URLS.get("repos").format(repository), headers=headers, verify=False)
+                if repo_resp.status_code != 200:
+                    raise ValueError('Can not retrieve from {}'.format(repository))
+                repo = json.loads(repo_resp.content)
 
-                r = requests.get(repo_api)
+                r = requests.get(API_URLS.get("commit").format(repository, repo['default_branch']), headers=headers, verify=False)
                 if r.status_code != 200:
-                    raise ValueError('Can not retrieve from {}'.format(url))
-                repo = json.loads(r.content)
-
-                commit_api = 'https://api.github.com/repos/{}/commits/{}?access_token={}'.format(url[19:], repo['default_branch'], access_token)
-                print(repo_api)
-
-                r = requests.get(commit_api)
-                if r.status_code != 200:
-                    raise ValueError('Can not retrieve from {}'.format(url))
+                    raise ValueError('Can not retrieve from {}'.format(repository))
                 commit = json.loads(r.content)
 
                 repo['last_commit_date'] = commit['commit']['committer']['date']
@@ -46,6 +62,10 @@ def main():
 
         repos.sort(key=lambda r: r['stargazers_count'], reverse=True)
         save_ranking(repos)
+
+
+def get_repos(url):
+    return url[19:]
 
 
 def get_access_token():
