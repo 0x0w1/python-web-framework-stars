@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
+      actions: read
 
     steps:
       - name: Checkout repository
@@ -93,7 +93,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A
+          git add README.md framework_stars_history.json charts/
           git status --cached
-          git commit -m "Update framework stars - $(date +'%Y-%m-%d')"
-          git push
+          git commit -m "Update framework stars - $(date +'%Y-%m-%d %H:%M:%S UTC')"
+          git push origin main
