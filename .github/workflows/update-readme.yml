@@ -1,0 +1,83 @@
+name: Update Framework Stars
+
+on:
+  schedule:
+    # Run weekly on Sundays at 00:00 UTC
+    - cron: "0 0 * * 0"
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Check last update date
+        id: check-last-update
+        run: |
+          if [ -f README.md ]; then
+            # Extract last update timestamp from README.md
+            LAST_UPDATE=$(grep "Last Automatic Update:" README.md | sed 's/.*Last Automatic Update: //' | sed 's/\*$//')
+            if [ -n "$LAST_UPDATE" ]; then
+              # Convert to Unix timestamp (remove timezone info for compatibility)
+              LAST_UPDATE_CLEAN=$(echo "$LAST_UPDATE" | sed 's/[A-Z]*$//')
+              LAST_TIMESTAMP=$(date -d "$LAST_UPDATE_CLEAN" +%s 2>/dev/null || echo "0")
+              CURRENT_TIMESTAMP=$(date +%s)
+              WEEK_IN_SECONDS=604800  # 7 days * 24 hours * 60 minutes * 60 seconds
+              
+              if [ $((CURRENT_TIMESTAMP - LAST_TIMESTAMP)) -lt $WEEK_IN_SECONDS ]; then
+                echo "Updated within the last week. Skipping update."
+                echo "should_update=false" >> $GITHUB_OUTPUT
+              else
+                echo "Last update was more than a week ago. Proceeding with update."
+                echo "should_update=true" >> $GITHUB_OUTPUT
+              fi
+            else
+              echo "No last update timestamp found. Proceeding with update."
+              echo "should_update=true" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "README.md not found. Proceeding with update."
+            echo "should_update=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run framework stars update
+        if: steps.check-last-update.outputs.should_update == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: uv run get_current_framework_stars.py
+
+      - name: Check for changes
+        if: steps.check-last-update.outputs.should_update == 'true'
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check-last-update.outputs.should_update == 'true' && steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git commit -m "Update framework stars - $(date +'%Y-%m-%d')"
+          git push
