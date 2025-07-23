@@ -2,8 +2,8 @@ name: Update Framework Stars
 
 on:
   schedule:
-    # Run weekly on Sundays at 00:00 UTC
-    - cron: "0 0 * * 0"
+    # Run daily at 00:00 UTC
+    - cron: "0 0 * * *"
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -39,13 +39,13 @@ jobs:
               LAST_UPDATE_CLEAN=$(echo "$LAST_UPDATE" | sed 's/[A-Z]*$//')
               LAST_TIMESTAMP=$(date -d "$LAST_UPDATE_CLEAN" +%s 2>/dev/null || echo "0")
               CURRENT_TIMESTAMP=$(date +%s)
-              WEEK_IN_SECONDS=604800  # 7 days * 24 hours * 60 minutes * 60 seconds
+              DAY_IN_SECONDS=86400  # 1 day * 24 hours * 60 minutes * 60 seconds
               
-              if [ $((CURRENT_TIMESTAMP - LAST_TIMESTAMP)) -lt $WEEK_IN_SECONDS ]; then
-                echo "Updated within the last week. Skipping update."
+              if [ $((CURRENT_TIMESTAMP - LAST_TIMESTAMP)) -lt $DAY_IN_SECONDS ]; then
+                echo "Updated within the last day. Skipping update."
                 echo "should_update=false" >> $GITHUB_OUTPUT
               else
-                echo "Last update was more than a week ago. Proceeding with update."
+                echo "Last update was more than a day ago. Proceeding with update."
                 echo "should_update=true" >> $GITHUB_OUTPUT
               fi
             else

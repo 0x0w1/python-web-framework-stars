@@ -1,5 +1,6 @@
 import logging
 import os
+import json
 from datetime import datetime
 from typing import List, Dict, Any
 
@@ -18,18 +19,183 @@ class ReadmeGenerator:
     
     GITHUB_API_BASE = "https://api.github.com"
     REPO_LIST_FILE = "list.txt"
-    ACCESS_TOKEN_FILE = "access_token.txt"
     OUTPUT_FILE = "README.md"
+    HISTORY_JSON_FILE = "framework_stars_history.json"
     
     MARKDOWN_HEADER = '''# Top Python Web Frameworks
 A list of popular github projects related to Python web framework (ranked by stars automatically)
 
-* ADD access_token.txt into this repository.
 * UPDATE **list.txt** (via Pull Request)
 
-| Project Name | Stars | Forks | Open Issues | Last Commit |
-| ------------ | ----- | ----- | ----------- | ----------- |
 '''
+    
+    def _get_markdown_growth_trends(self, json_filename: str) -> str:
+        """Get growth trends section with appropriate JSON filename."""
+        template = '''
+## 📊 Growth Trends
+
+<div id="chartContainer">
+  <div style="margin-bottom: 30px;">
+    <canvas id="starsChart" width="800" height="400"></canvas>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <canvas id="forksChart" width="800" height="400"></canvas>
+  </div>
+  <div style="margin-bottom: 30px;">
+    <canvas id="issuesChart" width="800" height="400"></canvas>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+<script>
+// Load and display historical data
+fetch('./JSONFILE')
+  .then(response => response.json())
+  .then(data => {
+    const projects = data.projects;
+    const topProjects = Object.keys(projects)
+      .filter(name => projects[name].history.length > 0)
+      .sort((a, b) => {
+        const latestA = projects[a].history[projects[a].history.length - 1];
+        const latestB = projects[b].history[projects[b].history.length - 1];
+        return latestB.stars - latestA.stars;
+      })
+      .slice(0, 10);
+
+    // Stars Chart
+    const starsCtx = document.getElementById('starsChart').getContext('2d');
+    new Chart(starsCtx, {{
+      type: 'line',
+      data: {{
+        datasets: topProjects.map((projectName, index) => ({
+          label: projectName,
+          data: projects[projectName].history.map(point => ({
+            x: point.timestamp,
+            y: point.stars
+          })),
+          borderColor: `hsl(${index * 36}, 70%, 50%)`,
+          backgroundColor: `hsla(${index * 36}, 70%, 50%, 0.1)`,
+          tension: 0.1
+        }))
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'GitHub Stars Over Time (Top 10)'
+          }
+        },
+        scales: {
+          x: {
+            type: 'time',
+            time: {
+              unit: 'day'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Stars'
+            }
+          }
+        }
+      }
+    });
+
+    // Forks Chart
+    const forksCtx = document.getElementById('forksChart').getContext('2d');
+    new Chart(forksCtx, {
+      type: 'line',
+      data: {
+        datasets: topProjects.map((projectName, index) => ({
+          label: projectName,
+          data: projects[projectName].history.map(point => ({
+            x: point.timestamp,
+            y: point.forks
+          })),
+          borderColor: `hsl(${index * 36}, 70%, 50%)`,
+          backgroundColor: `hsla(${index * 36}, 70%, 50%, 0.1)`,
+          tension: 0.1
+        }))
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'GitHub Forks Over Time (Top 10)'
+          }
+        },
+        scales: {
+          x: {
+            type: 'time',
+            time: {
+              unit: 'day'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Forks'
+            }
+          }
+        }
+      }
+    });
+
+    // Issues Chart
+    const issuesCtx = document.getElementById('issuesChart').getContext('2d');
+    new Chart(issuesCtx, {
+      type: 'line',
+      data: {
+        datasets: topProjects.map((projectName, index) => ({
+          label: projectName,
+          data: projects[projectName].history.map(point => ({
+            x: point.timestamp,
+            y: point.open_issues
+          })),
+          borderColor: `hsl(${index * 36}, 70%, 50%)`,
+          backgroundColor: `hsla(${index * 36}, 70%, 50%, 0.1)`,
+          tension: 0.1
+        }))
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Open Issues Over Time (Top 10)'
+          }
+        },
+        scales: {
+          x: {
+            type: 'time',
+            time: {
+              unit: 'day'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Open Issues'
+            }
+          }
+        }
+      }
+    });
+  })
+  .catch(error => {
+    console.error('Error loading chart data:', error);
+    document.getElementById('chartContainer').innerHTML = '<p>Charts will be available after data collection.</p>';
+  });
+</script>
+'''
+        return template.replace('JSONFILE', json_filename)
     
     MARKDOWN_FOOTER_TEMPLATE = '\n*Last Automatic Update: {}*'
     def __init__(self):
@@ -39,24 +205,13 @@ A list of popular github projects related to Python web framework (ranked by sta
 
 
     def _load_access_token(self) -> str:
-        """Load GitHub access token from environment variable or file."""
-        # First try to get token from environment variable (for GitHub Actions)
+        """Load GitHub access token from environment variable."""
         token = os.getenv('GITHUB_TOKEN')
-        if token:
-            return token.strip()
-        
-        # Fallback to file for local development
-        try:
-            with open(self.ACCESS_TOKEN_FILE, 'r') as f:
-                token = f.read().strip()
-                if not token:
-                    raise ValueError("Access token is empty")
-                return token
-        except FileNotFoundError:
+        if not token:
             raise FileNotFoundError(
-                f"GitHub token not found. Set GITHUB_TOKEN environment variable "
-                f"or create '{self.ACCESS_TOKEN_FILE}' file"
+                "GitHub token not found. Set GITHUB_TOKEN environment variable"
             )
+        return token.strip()
     
     def _validate_github_access(self) -> None:
         """Validate GitHub API access with current token."""
@@ -130,15 +285,24 @@ A list of popular github projects related to Python web framework (ranked by sta
         self.repositories.sort(key=lambda r: r['stargazers_count'], reverse=True)
         logger.info(f"Successfully processed {len(self.repositories)} repositories")
     
-    def generate_readme(self) -> None:
+    def generate_readme(self, output_file: str = None, json_file: str = None) -> None:
         """Generate README.md file with repository data."""
         if not self.repositories:
             raise ValueError("No repository data available. Run fetch_all_repositories() first.")
         
-        logger.info(f"Generating {self.OUTPUT_FILE}...")
+        # Use provided filenames or defaults
+        output_file = output_file or self.OUTPUT_FILE
+        json_file = json_file or self.HISTORY_JSON_FILE
         
-        with open(self.OUTPUT_FILE, 'w', encoding='utf-8') as f:
+        logger.info(f"Generating {output_file}...")
+        
+        with open(output_file, 'w', encoding='utf-8') as f:
             f.write(self.MARKDOWN_HEADER)
+            
+            # Add Current Rankings section first
+            f.write('## 📈 Current Rankings\n\n')
+            f.write('| Project Name | Stars | Forks | Open Issues | Last Commit |\n')
+            f.write('| ------------ | ----- | ----- | ----------- | ----------- |\n')
             
             for repo in self.repositories:
                 # Format last commit date
@@ -156,20 +320,113 @@ A list of popular github projects related to Python web framework (ranked by sta
                     f"{commit_date} |\n"
                 )
             
+            # Add Growth Trends section after the table
+            f.write(self._get_markdown_growth_trends(json_file))
+            
             # Add footer with timestamp
             timestamp = datetime.now().strftime('%Y-%m-%dT%H:%M:%S%Z')
             f.write(self.MARKDOWN_FOOTER_TEMPLATE.format(timestamp))
         
-        logger.info(f"Successfully generated {self.OUTPUT_FILE}")
+        logger.info(f"Successfully generated {output_file}")
+    
+    def _load_history_data(self, json_file: str = None) -> Dict[str, Any]:
+        """Load existing history data from JSON file."""
+        json_file = json_file or self.HISTORY_JSON_FILE
+        try:
+            with open(json_file, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            logger.info(f"History file {json_file} not found. Creating new one.")
+            return {
+                "metadata": {
+                    "first_recorded": None,
+                    "last_updated": None,
+                    "total_snapshots": 0
+                },
+                "projects": {}
+            }
+        except json.JSONDecodeError as e:
+            logger.error(f"Invalid JSON in {json_file}: {e}")
+            raise
+    
+    def _update_history_data(self, history_data: Dict[str, Any]) -> None:
+        """Update history data with current repository information."""
+        current_timestamp = datetime.now().isoformat() + 'Z'
+        
+        # Update metadata
+        if history_data["metadata"]["first_recorded"] is None:
+            history_data["metadata"]["first_recorded"] = current_timestamp
+        history_data["metadata"]["last_updated"] = current_timestamp
+        history_data["metadata"]["total_snapshots"] += 1
+        
+        # Update project data
+        for repo in self.repositories:
+            project_name = repo['name']
+            
+            # Initialize project if not exists
+            if project_name not in history_data["projects"]:
+                history_data["projects"][project_name] = {
+                    "name": project_name,
+                    "html_url": repo['html_url'],
+                    "history": []
+                }
+            
+            # Add current data point
+            data_point = {
+                "timestamp": current_timestamp,
+                "stars": repo['stargazers_count'],
+                "forks": repo['forks_count'],
+                "open_issues": repo['open_issues_count'],
+                "last_commit": repo['last_commit_date']
+            }
+            
+            history_data["projects"][project_name]["history"].append(data_point)
+            
+            # Keep history sorted by timestamp
+            history_data["projects"][project_name]["history"].sort(
+                key=lambda x: x["timestamp"]
+            )
+        
+        logger.info(f"Updated history data for {len(self.repositories)} projects")
+    
+    def _save_history_data(self, history_data: Dict[str, Any], json_file: str = None) -> None:
+        """Save history data to JSON file."""
+        json_file = json_file or self.HISTORY_JSON_FILE
+        try:
+            with open(json_file, 'w', encoding='utf-8') as f:
+                json.dump(history_data, f, indent=2, ensure_ascii=False)
+            logger.info(f"Successfully saved history data to {json_file}")
+        except Exception as e:
+            logger.error(f"Failed to save history data: {e}")
+            raise
+    
+    def generate_history_json(self, json_file: str = None) -> None:
+        """Generate or update time-series JSON data for graph visualization."""
+        if not self.repositories:
+            raise ValueError("No repository data available. Run fetch_all_repositories() first.")
+        
+        json_file = json_file or self.HISTORY_JSON_FILE
+        logger.info(f"Generating/updating {json_file}...")
+        
+        # Load existing history data
+        history_data = self._load_history_data(json_file)
+        
+        # Update with current data
+        self._update_history_data(history_data)
+        
+        # Save updated data
+        self._save_history_data(history_data, json_file)
     
     def run(self) -> None:
         """Main execution method."""
         try:
             self.fetch_all_repositories()
             self.generate_readme()
-            logger.info("README generation completed successfully")
+            self.generate_history_json()
+            
+            logger.info("README and history JSON generation completed successfully")
         except Exception as e:
-            logger.error(f"README generation failed: {e}")
+            logger.error(f"Generation failed: {e}")
             raise
 
 
