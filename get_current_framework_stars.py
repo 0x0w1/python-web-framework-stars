@@ -269,18 +269,27 @@ A list of popular github projects related to Python web framework (ranked by sta
         """Generate chart images using the chart generator script."""
         try:
             logger.info("Generating chart images...")
-            result = subprocess.run(['python', 'generate_charts.py'], 
-                                  capture_output=True, text=True, check=True)
-            logger.info("Chart images generated successfully")
-            if result.stdout:
-                logger.info(f"Chart generator output: {result.stdout}")
-        except subprocess.CalledProcessError as e:
+            # Try uv run first, fall back to python
+            commands = [
+                ['uv', 'run', 'generate_charts.py'],
+                ['python', 'generate_charts.py']
+            ]
+            
+            for cmd in commands:
+                try:
+                    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+                    logger.info("Chart images generated successfully")
+                    if result.stdout:
+                        logger.info(f"Chart generator output: {result.stdout}")
+                    return
+                except (subprocess.CalledProcessError, FileNotFoundError) as e:
+                    logger.warning(f"Command {' '.join(cmd)} failed: {e}")
+                    continue
+            
+            raise RuntimeError("All chart generation commands failed")
+            
+        except Exception as e:
             logger.error(f"Failed to generate charts: {e}")
-            if e.stderr:
-                logger.error(f"Chart generator error: {e.stderr}")
-            raise
-        except FileNotFoundError:
-            logger.error("generate_charts.py not found")
             raise
     
     def run(self) -> None:

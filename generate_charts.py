@@ -4,9 +4,11 @@ import os
 from datetime import datetime
 from typing import Dict, Any, List
 
+# Set matplotlib backend for headless environments (e.g., CI/CD)
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-from matplotlib.figure import Figure
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)

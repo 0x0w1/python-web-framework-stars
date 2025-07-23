@@ -61,11 +61,22 @@ jobs:
         if: steps.check-last-update.outputs.should_update == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MPLBACKEND: Agg
         run: uv run get_current_framework_stars.py
 
-      - name: Generate charts
+      - name: Debug file status
         if: steps.check-last-update.outputs.should_update == 'true'
-        run: uv run generate_charts.py
+        run: |
+          echo "=== Current directory contents ==="
+          ls -la
+          echo "=== Charts directory contents ==="
+          ls -la charts/ || echo "charts directory not found"
+          echo "=== Git status ==="
+          git status --porcelain
+          echo "=== Checking specific files ==="
+          test -f framework_stars_history.json && echo "framework_stars_history.json exists" || echo "framework_stars_history.json missing"
+          test -f charts/stars_chart.jpg && echo "charts/stars_chart.jpg exists" || echo "charts/stars_chart.jpg missing"
+          test -f charts/forks_chart.jpg && echo "charts/forks_chart.jpg exists" || echo "charts/forks_chart.jpg missing"
 
       - name: Check for changes
         if: steps.check-last-update.outputs.should_update == 'true'
@@ -82,6 +93,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add README.md framework_stars_history.json charts/
+          git add -A
+          git status --cached
           git commit -m "Update framework stars - $(date +'%Y-%m-%d')"
           git push
