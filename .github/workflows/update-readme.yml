@@ -78,6 +78,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add README.md
+          git add README.md framework_stars_history.json charts/
           git commit -m "Update framework stars - $(date +'%Y-%m-%d')"
           git push

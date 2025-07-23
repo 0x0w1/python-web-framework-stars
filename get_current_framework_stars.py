@@ -1,6 +1,7 @@
 import logging
 import os
 import json
+import subprocess
 from datetime import datetime
 from typing import List, Dict, Any
 
@@ -29,180 +30,27 @@ A list of popular github projects related to Python web framework (ranked by sta
 
 '''
     
-    def _get_markdown_growth_trends(self, json_filename: str) -> str:
-        """Get growth trends section with appropriate JSON filename."""
-        template = '''
+    def _get_markdown_growth_trends(self) -> str:
+        """Get growth trends section with static chart images."""
+        return '''
 ## 📊 Growth Trends
 
-<div id="chartContainer">
-  <div style="margin-bottom: 30px;">
-    <canvas id="starsChart" width="800" height="400"></canvas>
-  </div>
-  <div style="margin-bottom: 30px;">
-    <canvas id="forksChart" width="800" height="400"></canvas>
-  </div>
-  <div style="margin-bottom: 30px;">
-    <canvas id="issuesChart" width="800" height="400"></canvas>
-  </div>
-</div>
+### Stars Growth Over Time
+![Stars Chart](charts/stars_chart.jpg)
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-<script>
-// Load and display historical data
-fetch('./JSONFILE')
-  .then(response => response.json())
-  .then(data => {
-    const projects = data.projects;
-    const topProjects = Object.keys(projects)
-      .filter(name => projects[name].history.length > 0)
-      .sort((a, b) => {
-        const latestA = projects[a].history[projects[a].history.length - 1];
-        const latestB = projects[b].history[projects[b].history.length - 1];
-        return latestB.stars - latestA.stars;
-      })
-      .slice(0, 10);
+### Forks Growth Over Time
+![Forks Chart](charts/forks_chart.jpg)
 
-    // Stars Chart
-    const starsCtx = document.getElementById('starsChart').getContext('2d');
-    new Chart(starsCtx, {{
-      type: 'line',
-      data: {{
-        datasets: topProjects.map((projectName, index) => ({
-          label: projectName,
-          data: projects[projectName].history.map(point => ({
-            x: point.timestamp,
-            y: point.stars
-          })),
-          borderColor: `hsl(${index * 36}, 70%, 50%)`,
-          backgroundColor: `hsla(${index * 36}, 70%, 50%, 0.1)`,
-          tension: 0.1
-        }))
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: true,
-            text: 'GitHub Stars Over Time (Top 10)'
-          }
-        },
-        scales: {
-          x: {
-            type: 'time',
-            time: {
-              unit: 'day'
-            }
-          },
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Stars'
-            }
-          }
-        }
-      }
-    });
+*Charts show the top 10 frameworks by current star count*
 
-    // Forks Chart
-    const forksCtx = document.getElementById('forksChart').getContext('2d');
-    new Chart(forksCtx, {
-      type: 'line',
-      data: {
-        datasets: topProjects.map((projectName, index) => ({
-          label: projectName,
-          data: projects[projectName].history.map(point => ({
-            x: point.timestamp,
-            y: point.forks
-          })),
-          borderColor: `hsl(${index * 36}, 70%, 50%)`,
-          backgroundColor: `hsla(${index * 36}, 70%, 50%, 0.1)`,
-          tension: 0.1
-        }))
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: true,
-            text: 'GitHub Forks Over Time (Top 10)'
-          }
-        },
-        scales: {
-          x: {
-            type: 'time',
-            time: {
-              unit: 'day'
-            }
-          },
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Forks'
-            }
-          }
-        }
-      }
-    });
-
-    // Issues Chart
-    const issuesCtx = document.getElementById('issuesChart').getContext('2d');
-    new Chart(issuesCtx, {
-      type: 'line',
-      data: {
-        datasets: topProjects.map((projectName, index) => ({
-          label: projectName,
-          data: projects[projectName].history.map(point => ({
-            x: point.timestamp,
-            y: point.open_issues
-          })),
-          borderColor: `hsl(${index * 36}, 70%, 50%)`,
-          backgroundColor: `hsla(${index * 36}, 70%, 50%, 0.1)`,
-          tension: 0.1
-        }))
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: true,
-            text: 'Open Issues Over Time (Top 10)'
-          }
-        },
-        scales: {
-          x: {
-            type: 'time',
-            time: {
-              unit: 'day'
-            }
-          },
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Open Issues'
-            }
-          }
-        }
-      }
-    });
-  })
-  .catch(error => {
-    console.error('Error loading chart data:', error);
-    document.getElementById('chartContainer').innerHTML = '<p>Charts will be available after data collection.</p>';
-  });
-</script>
 '''
-        return template.replace('JSONFILE', json_filename)
     
     MARKDOWN_FOOTER_TEMPLATE = '\n*Last Automatic Update: {}*'
+    
     def __init__(self):
         self.access_token = self._load_access_token()
         self.headers = {"Authorization": f"Token {self.access_token}"}
         self.repositories = []
-
 
     def _load_access_token(self) -> str:
         """Load GitHub access token from environment variable."""
@@ -321,7 +169,7 @@ fetch('./JSONFILE')
                 )
             
             # Add Growth Trends section after the table
-            f.write(self._get_markdown_growth_trends(json_file))
+            f.write(self._get_markdown_growth_trends())
             
             # Add footer with timestamp
             timestamp = datetime.now().strftime('%Y-%m-%dT%H:%M:%S%Z')
@@ -417,14 +265,33 @@ fetch('./JSONFILE')
         # Save updated data
         self._save_history_data(history_data, json_file)
     
+    def _generate_charts(self) -> None:
+        """Generate chart images using the chart generator script."""
+        try:
+            logger.info("Generating chart images...")
+            result = subprocess.run(['python', 'generate_charts.py'], 
+                                  capture_output=True, text=True, check=True)
+            logger.info("Chart images generated successfully")
+            if result.stdout:
+                logger.info(f"Chart generator output: {result.stdout}")
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Failed to generate charts: {e}")
+            if e.stderr:
+                logger.error(f"Chart generator error: {e.stderr}")
+            raise
+        except FileNotFoundError:
+            logger.error("generate_charts.py not found")
+            raise
+    
     def run(self) -> None:
         """Main execution method."""
         try:
             self.fetch_all_repositories()
             self.generate_readme()
             self.generate_history_json()
+            self._generate_charts()
             
-            logger.info("README and history JSON generation completed successfully")
+            logger.info("README, history JSON, and chart generation completed successfully")
         except Exception as e:
             logger.error(f"Generation failed: {e}")
             raise
