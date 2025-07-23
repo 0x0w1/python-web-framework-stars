@@ -63,6 +63,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: uv run get_current_framework_stars.py
 
+      - name: Generate charts
+        if: steps.check-last-update.outputs.should_update == 'true'
+        run: uv run generate_charts.py
+
       - name: Check for changes
         if: steps.check-last-update.outputs.should_update == 'true'
         id: verify-changed-files
