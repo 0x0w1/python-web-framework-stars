@@ -1,0 +1,295 @@
+{
+  "metadata": {
+    "first_recorded": "2025-07-24T00:08:53.067042Z",
+    "last_updated": "2025-07-24T00:08:53.067042Z",
+    "total_snapshots": 1
+  },
+  "projects": {
+    "fastapi": {
+      "name": "fastapi",
+      "html_url": "https://github.com/fastapi/fastapi",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 87582,
+          "forks": 7635,
+          "open_issues": 317,
+          "last_commit": "2025-07-23T13:02:50Z"
+        }
+      ]
+    },
+    "django": {
+      "name": "django",
+      "html_url": "https://github.com/django/django",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 84333,
+          "forks": 32740,
+          "open_issues": 351,
+          "last_commit": "2025-07-23T23:17:55Z"
+        }
+      ]
+    },
+    "flask": {
+      "name": "flask",
+      "html_url": "https://github.com/pallets/flask",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 70023,
+          "forks": 16505,
+          "open_issues": 14,
+          "last_commit": "2025-06-12T20:48:07Z"
+        }
+      ]
+    },
+    "dash": {
+      "name": "dash",
+      "html_url": "https://github.com/plotly/dash",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 23511,
+          "forks": 2176,
+          "open_issues": 538,
+          "last_commit": "2025-07-18T17:18:35Z"
+        }
+      ]
+    },
+    "tornado": {
+      "name": "tornado",
+      "html_url": "https://github.com/tornadoweb/tornado",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 22063,
+          "forks": 5534,
+          "open_issues": 211,
+          "last_commit": "2025-07-22T20:43:43Z"
+        }
+      ]
+    },
+    "sanic": {
+      "name": "sanic",
+      "html_url": "https://github.com/sanic-org/sanic",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 18445,
+          "forks": 1575,
+          "open_issues": 140,
+          "last_commit": "2025-03-31T21:19:26Z"
+        }
+      ]
+    },
+    "aiohttp": {
+      "name": "aiohttp",
+      "html_url": "https://github.com/aio-libs/aiohttp",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 15850,
+          "forks": 2107,
+          "open_issues": 253,
+          "last_commit": "2025-07-21T16:54:06Z"
+        }
+      ]
+    },
+    "starlette": {
+      "name": "starlette",
+      "html_url": "https://github.com/encode/starlette",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 11269,
+          "forks": 1022,
+          "open_issues": 44,
+          "last_commit": "2025-07-20T17:29:09Z"
+        }
+      ]
+    },
+    "falcon": {
+      "name": "falcon",
+      "html_url": "https://github.com/falconry/falcon",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 9692,
+          "forks": 961,
+          "open_issues": 159,
+          "last_commit": "2025-07-22T19:31:00Z"
+        }
+      ]
+    },
+    "bottle": {
+      "name": "bottle",
+      "html_url": "https://github.com/bottlepy/bottle",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 8634,
+          "forks": 1486,
+          "open_issues": 282,
+          "last_commit": "2025-06-27T10:14:03Z"
+        }
+      ]
+    },
+    "hug": {
+      "name": "hug",
+      "html_url": "https://github.com/hugapi/hug",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 6893,
+          "forks": 389,
+          "open_issues": 187,
+          "last_commit": "2023-06-30T13:14:01Z"
+        }
+      ]
+    },
+    "eve": {
+      "name": "eve",
+      "html_url": "https://github.com/pyeve/eve",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 6731,
+          "forks": 745,
+          "open_issues": 29,
+          "last_commit": "2025-06-03T13:00:09Z"
+        }
+      ]
+    },
+    "vibora": {
+      "name": "vibora",
+      "html_url": "https://github.com/vibora-io/vibora",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 5639,
+          "forks": 301,
+          "open_issues": 140,
+          "last_commit": "2019-02-11T10:54:12Z"
+        }
+      ]
+    },
+    "pyramid": {
+      "name": "pyramid",
+      "html_url": "https://github.com/Pylons/pyramid",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 4038,
+          "forks": 889,
+          "open_issues": 82,
+          "last_commit": "2024-12-20T23:21:35Z"
+        }
+      ]
+    },
+    "quart": {
+      "name": "quart",
+      "html_url": "https://github.com/pallets/quart",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 3366,
+          "forks": 184,
+          "open_issues": 62,
+          "last_commit": "2025-06-12T21:05:35Z"
+        }
+      ]
+    },
+    "masonite": {
+      "name": "masonite",
+      "html_url": "https://github.com/MasoniteFramework/masonite",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 2291,
+          "forks": 129,
+          "open_issues": 20,
+          "last_commit": "2025-03-20T20:11:49Z"
+        }
+      ]
+    },
+    "web2py": {
+      "name": "web2py",
+      "html_url": "https://github.com/web2py/web2py",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 2151,
+          "forks": 907,
+          "open_issues": 369,
+          "last_commit": "2025-07-14T00:48:47Z"
+        }
+      ]
+    },
+    "cherrypy": {
+      "name": "cherrypy",
+      "html_url": "https://github.com/cherrypy/cherrypy",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 1913,
+          "forks": 369,
+          "open_issues": 259,
+          "last_commit": "2025-07-04T16:22:41Z"
+        }
+      ]
+    },
+    "tg2": {
+      "name": "tg2",
+      "html_url": "https://github.com/TurboGears/tg2",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 811,
+          "forks": 80,
+          "open_issues": 12,
+          "last_commit": "2025-02-18T22:52:59Z"
+        }
+      ]
+    },
+    "Growler": {
+      "name": "Growler",
+      "html_url": "https://github.com/pyGrowler/Growler",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 688,
+          "forks": 21,
+          "open_issues": 5,
+          "last_commit": "2020-03-08T07:51:41Z"
+        }
+      ]
+    },
+    "morepath": {
+      "name": "morepath",
+      "html_url": "https://github.com/morepath/morepath",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 396,
+          "forks": 37,
+          "open_issues": 77,
+          "last_commit": "2022-05-29T18:09:39Z"
+        }
+      ]
+    },
+    "circuits": {
+      "name": "circuits",
+      "html_url": "https://github.com/circuits/circuits",
+      "history": [
+        {
+          "timestamp": "2025-07-24T00:08:53.067042Z",
+          "stars": 316,
+          "forks": 57,
+          "open_issues": 42,
+          "last_commit": "2024-04-03T22:38:28Z"
+        }
+      ]
+    }
+  }
+}
