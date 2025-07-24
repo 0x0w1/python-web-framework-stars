@@ -174,21 +174,17 @@ class ChartGenerator:
 
 def main():
     """Main entry point."""
-    # Try both possible JSON files with appropriate output directories
-    json_configs = [
-        ("framework_stars_history.json", "charts"),
-        ("example/example_framework_stars_history.json", "example")
-    ]
+    # Use only the main framework_stars_history.json file
+    json_file = "framework_stars_history.json"
+    output_dir = "charts"
     
-    for json_file, output_dir in json_configs:
-        if os.path.exists(json_file):
-            logger.info(f"Using {json_file} -> {output_dir}")
-            generator = ChartGenerator(json_file, output_dir)
-            generator.generate_all_charts()
-            return
-    
-    logger.error("No valid JSON file found")
-    raise FileNotFoundError("Neither framework_stars_history.json nor example/example_framework_stars_history.json found")
+    if os.path.exists(json_file):
+        logger.info(f"Using {json_file} -> {output_dir}")
+        generator = ChartGenerator(json_file, output_dir)
+        generator.generate_all_charts()
+    else:
+        logger.error(f"Required file {json_file} not found")
+        raise FileNotFoundError(f"File {json_file} not found. Please run get_current_framework_stars.py first to generate the data.")
 
 
 if __name__ == '__main__':
