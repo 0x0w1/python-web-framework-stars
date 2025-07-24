@@ -1,4 +1,4 @@
-name: Manual Update Framework Stars
+name: Update Framework Trends (Manual)
 
 on:
   workflow_dispatch: # Allow manual trigger only
