@@ -1,0 +1,64 @@
+name: Manual Update Framework Stars
+
+on:
+  workflow_dispatch: # Allow manual trigger only
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run framework stars update
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MPLBACKEND: Agg
+        run: uv run get_current_framework_stars.py
+
+      - name: Debug file status
+        run: |
+          echo "=== Current directory contents ==="
+          ls -la
+          echo "=== Charts directory contents ==="
+          ls -la charts/ || echo "charts directory not found"
+          echo "=== Git status ==="
+          git status --porcelain
+          echo "=== Checking specific files ==="
+          test -f framework_stars_history.json && echo "framework_stars_history.json exists" || echo "framework_stars_history.json missing"
+          test -f charts/stars_chart.jpg && echo "charts/stars_chart.jpg exists" || echo "charts/stars_chart.jpg missing"
+          test -f charts/forks_chart.jpg && echo "charts/forks_chart.jpg exists" || echo "charts/forks_chart.jpg missing"
+
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md framework_stars_history.json charts/
+          git status --cached
+          git commit -m "Manual update framework stars - $(date +'%Y-%m-%d %H:%M:%S UTC')"
+          git push origin main
