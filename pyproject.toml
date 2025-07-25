@@ -7,3 +7,9 @@ dependencies = [
     "requests>=2.32.4",
     "matplotlib>=3.7.0",
 ]
+
+[tool.ruff]
+line-length = 119
+
+[tool.ruff.lint]
+extend-select = ["I"]
