@@ -1,4 +1,4 @@
-name: Update Framework Trends (Daily)
+name: Update Framework Stars
 
 on:
   schedule:
@@ -28,44 +28,13 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
-      - name: Check last update date
-        id: check-last-update
-        run: |
-          if [ -f README.md ]; then
-            # Extract last update timestamp from README.md
-            LAST_UPDATE=$(grep "Last Automatic Update:" README.md | sed 's/.*Last Automatic Update: //' | sed 's/\*$//')
-            if [ -n "$LAST_UPDATE" ]; then
-              # Convert to Unix timestamp (remove timezone info for compatibility)
-              LAST_UPDATE_CLEAN=$(echo "$LAST_UPDATE" | sed 's/[A-Z]*$//')
-              LAST_TIMESTAMP=$(date -d "$LAST_UPDATE_CLEAN" +%s 2>/dev/null || echo "0")
-              CURRENT_TIMESTAMP=$(date +%s)
-              DAY_IN_SECONDS=86400  # 1 day * 24 hours * 60 minutes * 60 seconds
-              
-              if [ $((CURRENT_TIMESTAMP - LAST_TIMESTAMP)) -lt $DAY_IN_SECONDS ]; then
-                echo "Updated within the last day. Skipping update."
-                echo "should_update=false" >> $GITHUB_OUTPUT
-              else
-                echo "Last update was more than a day ago. Proceeding with update."
-                echo "should_update=true" >> $GITHUB_OUTPUT
-              fi
-            else
-              echo "No last update timestamp found. Proceeding with update."
-              echo "should_update=true" >> $GITHUB_OUTPUT
-            fi
-          else
-            echo "README.md not found. Proceeding with update."
-            echo "should_update=true" >> $GITHUB_OUTPUT
-          fi
-
       - name: Run framework stars update
-        if: steps.check-last-update.outputs.should_update == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MPLBACKEND: Agg
         run: uv run get_current_framework_stars.py
 
       - name: Debug file status
-        if: steps.check-last-update.outputs.should_update == 'true'
         run: |
           echo "=== Current directory contents ==="
           ls -la
@@ -79,7 +48,6 @@ jobs:
           test -f charts/forks_chart.jpg && echo "charts/forks_chart.jpg exists" || echo "charts/forks_chart.jpg missing"
 
       - name: Check for changes
-        if: steps.check-last-update.outputs.should_update == 'true'
         id: verify-changed-files
         run: |
           if [ -n "$(git status --porcelain)" ]; then
@@ -89,7 +57,7 @@ jobs:
           fi
 
       - name: Commit and push changes
-        if: steps.check-last-update.outputs.should_update == 'true' && steps.verify-changed-files.outputs.changed == 'true'
+        if: steps.verify-changed-files.outputs.changed == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
