@@ -158,7 +158,7 @@ def main():
         print(f"Fetching data for {owner}/{repo}...")
 
         # Setup output
-        output_filename = f"repositories_information/{owner}_{repo}.json"
+        output_filename = f"repo_data/{owner}_{repo}.json"
 
         # Fetch data
         print("\n=== Fetching Stargazers ===")
