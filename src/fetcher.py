@@ -34,7 +34,7 @@ def generate_history_json(repo_urls: List[str], output_file: str = "python_web_f
             owner, repo = repo_path.split("/")
 
             # Load individual repository data
-            repo_file = f"repositories_information/{owner}_{repo}.json"
+            repo_file = f"repo_data/{owner}_{repo}.json"
 
             if not os.path.exists(repo_file):
                 print(f"Warning: {repo_file} not found, skipping...")
