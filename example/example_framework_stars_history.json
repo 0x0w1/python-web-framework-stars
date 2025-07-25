@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "first_recorded": "2025-07-01T00:00:00Z",
-    "last_updated": "2025-07-23T10:30:00Z",
-    "total_snapshots": 3
+    "first_recorded": "2025-01-01T00:00:00Z",
+    "last_updated": "2025-07-01T00:00:00Z",
+    "total_snapshots": 13
   },
   "projects": {
     "fastapi": {
@@ -10,25 +10,95 @@
       "html_url": "https://github.com/fastapi/fastapi",
       "history": [
         {
-          "timestamp": "2025-07-01T00:00:00Z",
-          "stars": 87000,
-          "forks": 7500,
-          "open_issues": 320,
-          "last_commit": "2025-06-30T14:30:00Z"
+          "timestamp": "2025-01-01T00:00:00Z",
+          "stars": 82000,
+          "forks": 6800,
+          "open_issues": 280,
+          "last_commit": "2024-12-30T14:30:00Z"
         },
         {
-          "timestamp": "2025-07-15T00:00:00Z",
-          "stars": 87300,
-          "forks": 7580,
+          "timestamp": "2025-01-15T00:00:00Z",
+          "stars": 82450,
+          "forks": 6840,
+          "open_issues": 285,
+          "last_commit": "2025-01-14T16:20:00Z"
+        },
+        {
+          "timestamp": "2025-02-01T00:00:00Z",
+          "stars": 83200,
+          "forks": 6920,
+          "open_issues": 290,
+          "last_commit": "2025-01-31T12:15:00Z"
+        },
+        {
+          "timestamp": "2025-02-15T00:00:00Z",
+          "stars": 83800,
+          "forks": 6980,
+          "open_issues": 295,
+          "last_commit": "2025-02-14T18:45:00Z"
+        },
+        {
+          "timestamp": "2025-03-01T00:00:00Z",
+          "stars": 84500,
+          "forks": 7060,
+          "open_issues": 300,
+          "last_commit": "2025-02-28T20:30:00Z"
+        },
+        {
+          "timestamp": "2025-03-15T00:00:00Z",
+          "stars": 85100,
+          "forks": 7140,
+          "open_issues": 305,
+          "last_commit": "2025-03-14T14:20:00Z"
+        },
+        {
+          "timestamp": "2025-04-01T00:00:00Z",
+          "stars": 85800,
+          "forks": 7230,
+          "open_issues": 310,
+          "last_commit": "2025-03-31T16:45:00Z"
+        },
+        {
+          "timestamp": "2025-04-15T00:00:00Z",
+          "stars": 86350,
+          "forks": 7310,
           "open_issues": 315,
-          "last_commit": "2025-07-14T16:20:00Z"
+          "last_commit": "2025-04-14T11:30:00Z"
         },
         {
-          "timestamp": "2025-07-23T10:30:00Z",
-          "stars": 87556,
-          "forks": 7628,
-          "open_issues": 317,
-          "last_commit": "2025-07-21T12:21:22Z"
+          "timestamp": "2025-05-01T00:00:00Z",
+          "stars": 86900,
+          "forks": 7400,
+          "open_issues": 318,
+          "last_commit": "2025-04-30T19:15:00Z"
+        },
+        {
+          "timestamp": "2025-05-15T00:00:00Z",
+          "stars": 87400,
+          "forks": 7480,
+          "open_issues": 320,
+          "last_commit": "2025-05-14T15:20:00Z"
+        },
+        {
+          "timestamp": "2025-06-01T00:00:00Z",
+          "stars": 87850,
+          "forks": 7550,
+          "open_issues": 322,
+          "last_commit": "2025-05-31T13:45:00Z"
+        },
+        {
+          "timestamp": "2025-06-15T00:00:00Z",
+          "stars": 88200,
+          "forks": 7610,
+          "open_issues": 325,
+          "last_commit": "2025-06-14T17:30:00Z"
+        },
+        {
+          "timestamp": "2025-07-01T00:00:00Z",
+          "stars": 88500,
+          "forks": 7680,
+          "open_issues": 328,
+          "last_commit": "2025-06-30T21:15:00Z"
         }
       ]
     },
@@ -37,25 +107,95 @@
       "html_url": "https://github.com/django/django",
       "history": [
         {
-          "timestamp": "2025-07-01T00:00:00Z",
-          "stars": 84000,
-          "forks": 32500,
-          "open_issues": 360,
-          "last_commit": "2025-06-30T18:45:00Z"
+          "timestamp": "2025-01-01T00:00:00Z",
+          "stars": 79000,
+          "forks": 30500,
+          "open_issues": 340,
+          "last_commit": "2024-12-31T18:45:00Z"
         },
         {
-          "timestamp": "2025-07-15T00:00:00Z",
-          "stars": 84150,
-          "forks": 32620,
+          "timestamp": "2025-01-15T00:00:00Z",
+          "stars": 79300,
+          "forks": 30620,
+          "open_issues": 345,
+          "last_commit": "2025-01-14T20:10:00Z"
+        },
+        {
+          "timestamp": "2025-02-01T00:00:00Z",
+          "stars": 79800,
+          "forks": 30780,
+          "open_issues": 350,
+          "last_commit": "2025-01-31T14:25:00Z"
+        },
+        {
+          "timestamp": "2025-02-15T00:00:00Z",
+          "stars": 80200,
+          "forks": 30920,
+          "open_issues": 355,
+          "last_commit": "2025-02-14T16:40:00Z"
+        },
+        {
+          "timestamp": "2025-03-01T00:00:00Z",
+          "stars": 80700,
+          "forks": 31080,
           "open_issues": 358,
-          "last_commit": "2025-07-14T20:10:00Z"
+          "last_commit": "2025-02-28T19:30:00Z"
         },
         {
-          "timestamp": "2025-07-23T10:30:00Z",
-          "stars": 84318,
-          "forks": 32739,
-          "open_issues": 356,
-          "last_commit": "2025-07-22T19:29:14Z"
+          "timestamp": "2025-03-15T00:00:00Z",
+          "stars": 81100,
+          "forks": 31230,
+          "open_issues": 360,
+          "last_commit": "2025-03-14T12:15:00Z"
+        },
+        {
+          "timestamp": "2025-04-01T00:00:00Z",
+          "stars": 81600,
+          "forks": 31400,
+          "open_issues": 362,
+          "last_commit": "2025-03-31T15:50:00Z"
+        },
+        {
+          "timestamp": "2025-04-15T00:00:00Z",
+          "stars": 82000,
+          "forks": 31550,
+          "open_issues": 365,
+          "last_commit": "2025-04-14T18:20:00Z"
+        },
+        {
+          "timestamp": "2025-05-01T00:00:00Z",
+          "stars": 82450,
+          "forks": 31720,
+          "open_issues": 368,
+          "last_commit": "2025-04-30T20:35:00Z"
+        },
+        {
+          "timestamp": "2025-05-15T00:00:00Z",
+          "stars": 82850,
+          "forks": 31880,
+          "open_issues": 370,
+          "last_commit": "2025-05-14T14:45:00Z"
+        },
+        {
+          "timestamp": "2025-06-01T00:00:00Z",
+          "stars": 83200,
+          "forks": 32030,
+          "open_issues": 372,
+          "last_commit": "2025-05-31T16:20:00Z"
+        },
+        {
+          "timestamp": "2025-06-15T00:00:00Z",
+          "stars": 83500,
+          "forks": 32180,
+          "open_issues": 375,
+          "last_commit": "2025-06-14T19:10:00Z"
+        },
+        {
+          "timestamp": "2025-07-01T00:00:00Z",
+          "stars": 83800,
+          "forks": 32320,
+          "open_issues": 378,
+          "last_commit": "2025-06-30T22:30:00Z"
         }
       ]
     },
@@ -64,25 +204,289 @@
       "html_url": "https://github.com/pallets/flask",
       "history": [
         {
-          "timestamp": "2025-07-01T00:00:00Z",
-          "stars": 69800,
-          "forks": 16450,
-          "open_issues": 18,
-          "last_commit": "2025-06-12T20:48:07Z"
+          "timestamp": "2025-01-01T00:00:00Z",
+          "stars": 67500,
+          "forks": 15800,
+          "open_issues": 12,
+          "last_commit": "2024-12-15T20:48:07Z"
         },
         {
-          "timestamp": "2025-07-15T00:00:00Z",
-          "stars": 69900,
-          "forks": 16480,
-          "open_issues": 16,
-          "last_commit": "2025-06-12T20:48:07Z"
-        },
-        {
-          "timestamp": "2025-07-23T10:30:00Z",
-          "stars": 70021,
-          "forks": 16505,
+          "timestamp": "2025-01-15T00:00:00Z",
+          "stars": 67720,
+          "forks": 15840,
           "open_issues": 14,
-          "last_commit": "2025-06-12T20:48:07Z"
+          "last_commit": "2025-01-10T15:30:00Z"
+        },
+        {
+          "timestamp": "2025-02-01T00:00:00Z",
+          "stars": 68000,
+          "forks": 15900,
+          "open_issues": 16,
+          "last_commit": "2025-01-28T18:20:00Z"
+        },
+        {
+          "timestamp": "2025-02-15T00:00:00Z",
+          "stars": 68250,
+          "forks": 15950,
+          "open_issues": 18,
+          "last_commit": "2025-02-10T12:45:00Z"
+        },
+        {
+          "timestamp": "2025-03-01T00:00:00Z",
+          "stars": 68520,
+          "forks": 16010,
+          "open_issues": 20,
+          "last_commit": "2025-02-25T14:30:00Z"
+        },
+        {
+          "timestamp": "2025-03-15T00:00:00Z",
+          "stars": 68780,
+          "forks": 16070,
+          "open_issues": 22,
+          "last_commit": "2025-03-10T16:15:00Z"
+        },
+        {
+          "timestamp": "2025-04-01T00:00:00Z",
+          "stars": 69050,
+          "forks": 16130,
+          "open_issues": 24,
+          "last_commit": "2025-03-28T19:20:00Z"
+        },
+        {
+          "timestamp": "2025-04-15T00:00:00Z",
+          "stars": 69300,
+          "forks": 16190,
+          "open_issues": 26,
+          "last_commit": "2025-04-12T13:40:00Z"
+        },
+        {
+          "timestamp": "2025-05-01T00:00:00Z",
+          "stars": 69580,
+          "forks": 16250,
+          "open_issues": 28,
+          "last_commit": "2025-04-28T17:25:00Z"
+        },
+        {
+          "timestamp": "2025-05-15T00:00:00Z",
+          "stars": 69820,
+          "forks": 16310,
+          "open_issues": 30,
+          "last_commit": "2025-05-12T15:50:00Z"
+        },
+        {
+          "timestamp": "2025-06-01T00:00:00Z",
+          "stars": 70080,
+          "forks": 16370,
+          "open_issues": 32,
+          "last_commit": "2025-05-29T20:10:00Z"
+        },
+        {
+          "timestamp": "2025-06-15T00:00:00Z",
+          "stars": 70300,
+          "forks": 16430,
+          "open_issues": 34,
+          "last_commit": "2025-06-10T18:35:00Z"
+        },
+        {
+          "timestamp": "2025-07-01T00:00:00Z",
+          "stars": 70500,
+          "forks": 16480,
+          "open_issues": 36,
+          "last_commit": "2025-06-28T21:45:00Z"
+        }
+      ]
+    },
+    "tornado": {
+      "name": "tornado",
+      "html_url": "https://github.com/tornadoweb/tornado",
+      "history": [
+        {
+          "timestamp": "2025-01-01T00:00:00Z",
+          "stars": 21200,
+          "forks": 5350,
+          "open_issues": 190,
+          "last_commit": "2024-12-20T14:30:00Z"
+        },
+        {
+          "timestamp": "2025-01-15T00:00:00Z",
+          "stars": 21280,
+          "forks": 5365,
+          "open_issues": 195,
+          "last_commit": "2025-01-12T16:45:00Z"
+        },
+        {
+          "timestamp": "2025-02-01T00:00:00Z",
+          "stars": 21400,
+          "forks": 5385,
+          "open_issues": 200,
+          "last_commit": "2025-01-30T18:20:00Z"
+        },
+        {
+          "timestamp": "2025-02-15T00:00:00Z",
+          "stars": 21500,
+          "forks": 5405,
+          "open_issues": 205,
+          "last_commit": "2025-02-12T15:30:00Z"
+        },
+        {
+          "timestamp": "2025-03-01T00:00:00Z",
+          "stars": 21620,
+          "forks": 5430,
+          "open_issues": 208,
+          "last_commit": "2025-02-28T17:45:00Z"
+        },
+        {
+          "timestamp": "2025-03-15T00:00:00Z",
+          "stars": 21720,
+          "forks": 5450,
+          "open_issues": 210,
+          "last_commit": "2025-03-12T19:20:00Z"
+        },
+        {
+          "timestamp": "2025-04-01T00:00:00Z",
+          "stars": 21830,
+          "forks": 5475,
+          "open_issues": 212,
+          "last_commit": "2025-03-30T14:15:00Z"
+        },
+        {
+          "timestamp": "2025-04-15T00:00:00Z",
+          "stars": 21920,
+          "forks": 5495,
+          "open_issues": 215,
+          "last_commit": "2025-04-10T16:40:00Z"
+        },
+        {
+          "timestamp": "2025-05-01T00:00:00Z",
+          "stars": 22020,
+          "forks": 5515,
+          "open_issues": 218,
+          "last_commit": "2025-04-28T18:55:00Z"
+        },
+        {
+          "timestamp": "2025-05-15T00:00:00Z",
+          "stars": 22100,
+          "forks": 5535,
+          "open_issues": 220,
+          "last_commit": "2025-05-12T20:30:00Z"
+        },
+        {
+          "timestamp": "2025-06-01T00:00:00Z",
+          "stars": 22180,
+          "forks": 5555,
+          "open_issues": 222,
+          "last_commit": "2025-05-30T15:20:00Z"
+        },
+        {
+          "timestamp": "2025-06-15T00:00:00Z",
+          "stars": 22250,
+          "forks": 5570,
+          "open_issues": 225,
+          "last_commit": "2025-06-12T17:45:00Z"
+        },
+        {
+          "timestamp": "2025-07-01T00:00:00Z",
+          "stars": 22320,
+          "forks": 5585,
+          "open_issues": 228,
+          "last_commit": "2025-06-29T19:30:00Z"
+        }
+      ]
+    },
+    "sanic": {
+      "name": "sanic",
+      "html_url": "https://github.com/sanic-org/sanic",
+      "history": [
+        {
+          "timestamp": "2025-01-01T00:00:00Z",
+          "stars": 17800,
+          "forks": 1480,
+          "open_issues": 120,
+          "last_commit": "2024-12-28T14:30:00Z"
+        },
+        {
+          "timestamp": "2025-01-15T00:00:00Z",
+          "stars": 17870,
+          "forks": 1490,
+          "open_issues": 125,
+          "last_commit": "2025-01-10T16:20:00Z"
+        },
+        {
+          "timestamp": "2025-02-01T00:00:00Z",
+          "stars": 17960,
+          "forks": 1505,
+          "open_issues": 130,
+          "last_commit": "2025-01-28T18:45:00Z"
+        },
+        {
+          "timestamp": "2025-02-15T00:00:00Z",
+          "stars": 18030,
+          "forks": 1515,
+          "open_issues": 133,
+          "last_commit": "2025-02-10T15:30:00Z"
+        },
+        {
+          "timestamp": "2025-03-01T00:00:00Z",
+          "stars": 18120,
+          "forks": 1525,
+          "open_issues": 135,
+          "last_commit": "2025-02-25T17:15:00Z"
+        },
+        {
+          "timestamp": "2025-03-15T00:00:00Z",
+          "stars": 18200,
+          "forks": 1535,
+          "open_issues": 138,
+          "last_commit": "2025-03-10T19:40:00Z"
+        },
+        {
+          "timestamp": "2025-04-01T00:00:00Z",
+          "stars": 18280,
+          "forks": 1545,
+          "open_issues": 140,
+          "last_commit": "2025-03-28T14:25:00Z"
+        },
+        {
+          "timestamp": "2025-04-15T00:00:00Z",
+          "stars": 18350,
+          "forks": 1555,
+          "open_issues": 142,
+          "last_commit": "2025-04-10T16:50:00Z"
+        },
+        {
+          "timestamp": "2025-05-01T00:00:00Z",
+          "stars": 18420,
+          "forks": 1565,
+          "open_issues": 145,
+          "last_commit": "2025-04-28T18:35:00Z"
+        },
+        {
+          "timestamp": "2025-05-15T00:00:00Z",
+          "stars": 18480,
+          "forks": 1575,
+          "open_issues": 148,
+          "last_commit": "2025-05-12T20:10:00Z"
+        },
+        {
+          "timestamp": "2025-06-01T00:00:00Z",
+          "stars": 18540,
+          "forks": 1585,
+          "open_issues": 150,
+          "last_commit": "2025-05-30T15:45:00Z"
+        },
+        {
+          "timestamp": "2025-06-15T00:00:00Z",
+          "stars": 18590,
+          "forks": 1595,
+          "open_issues": 152,
+          "last_commit": "2025-06-12T17:20:00Z"
+        },
+        {
+          "timestamp": "2025-07-01T00:00:00Z",
+          "stars": 18640,
+          "forks": 1605,
+          "open_issues": 155,
+          "last_commit": "2025-06-29T19:55:00Z"
         }
       ]
     }
