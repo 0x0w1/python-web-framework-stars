@@ -1,8 +1,8 @@
 {
   "metadata": {
     "first_recorded": "2025-07-24T00:08:53.067042Z",
-    "last_updated": "2025-11-16T01:43:57.512901Z",
-    "total_snapshots": 72
+    "last_updated": "2025-11-18T01:38:26.482456Z",
+    "total_snapshots": 73
   },
   "projects": {
     "fastapi": {
@@ -512,6 +512,13 @@
           "forks": 8228,
           "open_issues": 215,
           "last_commit": "2025-11-13T17:03:55Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 92017,
+          "forks": 8239,
+          "open_issues": 220,
+          "last_commit": "2025-11-17T19:34:16Z"
         }
       ]
     },
@@ -1022,6 +1029,13 @@
           "forks": 33227,
           "open_issues": 434,
           "last_commit": "2025-11-14T14:26:05Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 85815,
+          "forks": 33233,
+          "open_issues": 360,
+          "last_commit": "2025-11-17T20:14:42Z"
         }
       ]
     },
@@ -1532,6 +1546,13 @@
           "forks": 16620,
           "open_issues": 15,
           "last_commit": "2025-10-14T20:26:26Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 70789,
+          "forks": 16626,
+          "open_issues": 12,
+          "last_commit": "2025-11-17T18:05:51Z"
         }
       ]
     },
@@ -2041,6 +2062,13 @@
           "stars": 24255,
           "forks": 2231,
           "open_issues": 578,
+          "last_commit": "2025-11-14T14:26:52Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 24255,
+          "forks": 2235,
+          "open_issues": 580,
           "last_commit": "2025-11-14T14:26:52Z"
         }
       ]
@@ -2552,6 +2580,13 @@
           "forks": 5544,
           "open_issues": 206,
           "last_commit": "2025-09-17T17:43:47Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 22346,
+          "forks": 5545,
+          "open_issues": 206,
+          "last_commit": "2025-09-17T17:43:47Z"
         }
       ]
     },
@@ -3059,6 +3094,13 @@
         {
           "timestamp": "2025-11-16T01:43:57.512901Z",
           "stars": 18560,
+          "forks": 1583,
+          "open_issues": 148,
+          "last_commit": "2025-03-31T21:19:26Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 18562,
           "forks": 1583,
           "open_issues": 148,
           "last_commit": "2025-03-31T21:19:26Z"
@@ -3572,6 +3614,13 @@
           "forks": 2156,
           "open_issues": 282,
           "last_commit": "2025-10-29T10:19:08Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 16095,
+          "forks": 2156,
+          "open_issues": 285,
+          "last_commit": "2025-10-29T10:19:08Z"
         }
       ]
     },
@@ -4079,6 +4128,13 @@
         {
           "timestamp": "2025-11-16T01:43:57.512901Z",
           "stars": 11661,
+          "forks": 1080,
+          "open_issues": 51,
+          "last_commit": "2025-11-04T07:29:23Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 11665,
           "forks": 1080,
           "open_issues": 51,
           "last_commit": "2025-11-04T07:29:23Z"
@@ -4592,6 +4648,13 @@
           "forks": 973,
           "open_issues": 165,
           "last_commit": "2025-11-13T20:19:07Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 9758,
+          "forks": 972,
+          "open_issues": 162,
+          "last_commit": "2025-11-16T10:15:20Z"
         }
       ]
     },
@@ -5098,6 +5161,13 @@
         },
         {
           "timestamp": "2025-11-16T01:43:57.512901Z",
+          "stars": 8690,
+          "forks": 1488,
+          "open_issues": 284,
+          "last_commit": "2025-09-19T11:25:45Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
           "stars": 8690,
           "forks": 1488,
           "open_issues": 284,
@@ -5612,6 +5682,13 @@
           "forks": 390,
           "open_issues": 186,
           "last_commit": "2023-06-30T13:14:01Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 6905,
+          "forks": 390,
+          "open_issues": 186,
+          "last_commit": "2023-06-30T13:14:01Z"
         }
       ]
     },
@@ -6118,6 +6195,13 @@
         },
         {
           "timestamp": "2025-11-16T01:43:57.512901Z",
+          "stars": 6736,
+          "forks": 746,
+          "open_issues": 31,
+          "last_commit": "2025-08-26T14:11:54Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
           "stars": 6736,
           "forks": 746,
           "open_issues": 31,
@@ -6632,6 +6716,13 @@
           "forks": 302,
           "open_issues": 140,
           "last_commit": "2019-02-11T10:54:12Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 5627,
+          "forks": 302,
+          "open_issues": 140,
+          "last_commit": "2019-02-11T10:54:12Z"
         }
       ]
     },
@@ -7138,6 +7229,13 @@
         },
         {
           "timestamp": "2025-11-16T01:43:57.512901Z",
+          "stars": 4061,
+          "forks": 887,
+          "open_issues": 90,
+          "last_commit": "2024-12-20T23:21:35Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
           "stars": 4061,
           "forks": 887,
           "open_issues": 90,
@@ -7652,6 +7750,13 @@
           "forks": 190,
           "open_issues": 64,
           "last_commit": "2025-09-01T18:49:41Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 3542,
+          "forks": 191,
+          "open_issues": 64,
+          "last_commit": "2025-09-01T18:49:41Z"
         }
       ]
     },
@@ -8162,6 +8267,13 @@
           "forks": 134,
           "open_issues": 21,
           "last_commit": "2025-03-20T20:11:49Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 2321,
+          "forks": 134,
+          "open_issues": 21,
+          "last_commit": "2025-03-20T20:11:49Z"
         }
       ]
     },
@@ -8668,6 +8780,13 @@
         },
         {
           "timestamp": "2025-11-16T01:43:57.512901Z",
+          "stars": 2167,
+          "forks": 911,
+          "open_issues": 368,
+          "last_commit": "2025-10-22T10:50:46Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
           "stars": 2167,
           "forks": 911,
           "open_issues": 368,
@@ -9182,6 +9301,13 @@
           "forks": 371,
           "open_issues": 263,
           "last_commit": "2025-11-14T03:48:51Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 1927,
+          "forks": 372,
+          "open_issues": 264,
+          "last_commit": "2025-11-16T03:35:03Z"
         }
       ]
     },
@@ -9688,6 +9814,13 @@
         },
         {
           "timestamp": "2025-11-16T01:43:57.512901Z",
+          "stars": 810,
+          "forks": 83,
+          "open_issues": 14,
+          "last_commit": "2025-11-13T15:58:08Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
           "stars": 810,
           "forks": 83,
           "open_issues": 14,
@@ -10202,6 +10335,13 @@
           "forks": 21,
           "open_issues": 5,
           "last_commit": "2020-03-08T07:51:41Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 688,
+          "forks": 21,
+          "open_issues": 5,
+          "last_commit": "2020-03-08T07:51:41Z"
         }
       ]
     },
@@ -10712,6 +10852,13 @@
           "forks": 39,
           "open_issues": 75,
           "last_commit": "2025-11-14T15:44:44Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
+          "stars": 396,
+          "forks": 39,
+          "open_issues": 75,
+          "last_commit": "2025-11-17T13:15:50Z"
         }
       ]
     },
@@ -11218,6 +11365,13 @@
         },
         {
           "timestamp": "2025-11-16T01:43:57.512901Z",
+          "stars": 317,
+          "forks": 56,
+          "open_issues": 42,
+          "last_commit": "2024-04-03T22:38:28Z"
+        },
+        {
+          "timestamp": "2025-11-18T01:38:26.482456Z",
           "stars": 317,
           "forks": 56,
           "open_issues": 42,
