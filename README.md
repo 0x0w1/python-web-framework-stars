@@ -7,23 +7,23 @@ A list of popular github projects related to Python web framework (ranked by sta
 
 | Project Name | Stars | Forks | Open Issues | Last Commit |
 | ------------ | ----- | ----- | ----------- | ----------- |
-| [fastapi](https://github.com/fastapi/fastapi) | 95535 | 8746 | 154 | 2026-02-24 09:51:43 |
-| [django](https://github.com/django/django) | 86924 | 33682 | 423 | 2026-02-24 18:44:42 |
-| [flask](https://github.com/pallets/flask) | 71261 | 16734 | 3 | 2026-02-20 04:00:34 |
-| [dash](https://github.com/plotly/dash) | 24514 | 2258 | 566 | 2026-02-20 16:00:57 |
-| [tornado](https://github.com/tornadoweb/tornado) | 22445 | 5547 | 216 | 2026-01-23 01:16:18 |
-| [sanic](https://github.com/sanic-org/sanic) | 18640 | 1585 | 124 | 2025-12-31 19:05:34 |
-| [aiohttp](https://github.com/aio-libs/aiohttp) | 16362 | 2204 | 269 | 2026-02-24 19:48:26 |
-| [starlette](https://github.com/Kludex/starlette) | 11969 | 1121 | 48 | 2026-02-23 22:17:03 |
-| [falcon](https://github.com/falconry/falcon) | 9807 | 980 | 163 | 2026-02-16 10:48:02 |
-| [bottle](https://github.com/bottlepy/bottle) | 8765 | 1498 | 284 | 2026-02-17 10:24:31 |
+| [fastapi](https://github.com/fastapi/fastapi) | 95621 | 8754 | 150 | 2026-02-25 18:14:58 |
+| [django](https://github.com/django/django) | 86936 | 33694 | 421 | 2026-02-26 18:26:55 |
+| [flask](https://github.com/pallets/flask) | 71277 | 16735 | 3 | 2026-02-20 04:00:34 |
+| [dash](https://github.com/plotly/dash) | 24424 | 2260 | 566 | 2026-02-26 14:50:52 |
+| [tornado](https://github.com/tornadoweb/tornado) | 22405 | 5547 | 217 | 2026-01-23 01:16:18 |
+| [sanic](https://github.com/sanic-org/sanic) | 18638 | 1585 | 124 | 2025-12-31 19:05:34 |
+| [aiohttp](https://github.com/aio-libs/aiohttp) | 16364 | 2205 | 268 | 2026-02-27 00:27:16 |
+| [starlette](https://github.com/Kludex/starlette) | 11981 | 1121 | 46 | 2026-02-23 22:17:03 |
+| [falcon](https://github.com/falconry/falcon) | 9803 | 980 | 164 | 2026-02-16 10:48:02 |
+| [bottle](https://github.com/bottlepy/bottle) | 8761 | 1499 | 285 | 2026-02-17 10:24:31 |
 | [hug](https://github.com/hugapi/hug) | 6909 | 389 | 186 | 2023-06-30 13:14:01 |
-| [eve](https://github.com/pyeve/eve) | 6754 | 737 | 38 | 2026-02-11 09:34:15 |
+| [eve](https://github.com/pyeve/eve) | 6748 | 736 | 38 | 2026-02-11 09:34:15 |
 | [vibora](https://github.com/vibora-io/vibora) | 5610 | 301 | 140 | 2019-02-11 10:54:12 |
-| [pyramid](https://github.com/Pylons/pyramid) | 4074 | 893 | 80 | 2026-02-24 23:01:33 |
-| [quart](https://github.com/pallets/quart) | 3600 | 193 | 66 | 2025-09-01 18:49:41 |
-| [masonite](https://github.com/MasoniteFramework/masonite) | 2363 | 135 | 24 | 2025-03-20 20:11:49 |
-| [web2py](https://github.com/web2py/web2py) | 2172 | 907 | 368 | 2026-02-11 14:23:25 |
+| [pyramid](https://github.com/Pylons/pyramid) | 4075 | 893 | 79 | 2026-02-25 22:46:27 |
+| [quart](https://github.com/pallets/quart) | 3603 | 193 | 66 | 2025-09-01 18:49:41 |
+| [masonite](https://github.com/MasoniteFramework/masonite) | 2364 | 135 | 24 | 2025-03-20 20:11:49 |
+| [web2py](https://github.com/web2py/web2py) | 2172 | 908 | 369 | 2026-02-11 14:23:25 |
 | [cherrypy](https://github.com/cherrypy/cherrypy) | 1937 | 368 | 267 | 2025-11-20 00:36:37 |
 | [tg2](https://github.com/TurboGears/tg2) | 812 | 82 | 14 | 2025-11-13 15:58:08 |
 | [Growler](https://github.com/pyGrowler/Growler) | 689 | 21 | 5 | 2020-03-08 07:51:41 |
@@ -41,4 +41,4 @@ A list of popular github projects related to Python web framework (ranked by sta
 *Charts show the top 10 frameworks by current star count*
 
 
-*Last Automatic Update: 2026-02-25T02:11:37*
+*Last Automatic Update: 2026-02-27T02:06:08*
